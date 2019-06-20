@@ -2,6 +2,10 @@
 dotfile_packages:
   - ack # Used by `search`
   - exa # Used as replacement for `ls`
+  - htop # Configured by `htop/htoprc`
+  - keepassxc # Configured by `keepassxc/keepassxc.ini`
+  - neofetch # Configured by `neofetch/config.conf`
+  - nmap # Used by alias `ipnet`
   - xclip # Used by `cpy` / `pst`
 
 dotfile_path: "{{ home_path }}/.dotfiles"

@@ -9,11 +9,7 @@ packages:
     - gnome-tweaks
     - gparted
     - gramps
-    - htop
     - iotop
-    - keepassxc
-    - neofetch
-    - nmap
     - poppler-utils
 
     # Communication & Remote Desktop
