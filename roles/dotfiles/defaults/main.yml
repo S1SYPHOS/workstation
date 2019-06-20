@@ -1,0 +1,7 @@
+---
+dotfile_packages:
+  - ack # Used by `search`
+  - exa # Used as replacement for `ls`
+  - xclip # Used by `cpy` / `pst`
+
+dotfile_path: "{{ home_path }}/.dotfiles"

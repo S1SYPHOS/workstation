@@ -1,0 +1,18 @@
+---
+- name: Add Keybinding to launch Terminal
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/launch_terminal/{{ item.key }}"
+    value: "{{ item.value }}"
+  loop: "{{ keybindings_custom['launch_terminal'] }}"
+
+- name: Add Keybinding to launch System Monitor
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/launch_system_monitor/{{ item.key }}"
+    value: "{{ item.value }}"
+  loop: "{{ keybindings_custom['launch_system_monitor'] }}"
+
+# TODO: Load keybindings dynamically
+- name: Add custom keybindings
+  dconf:
+    key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
+    value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/launch_terminal/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/launch_system_monitor/']"

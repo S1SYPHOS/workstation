@@ -1,0 +1,23 @@
+---
+- name: Advanced Power Management
+  block:
+  - name: Install TLP
+    dnf:
+      name: tlp
+      state: present
+
+  - name: Start TLP
+    service:
+      name: tlp
+      state: started
+
+  - name: Enable TLP
+    service:
+      name: tlp
+      enabled: true
+
+  become: yes
+  tags:
+    - services
+    - power
+    - tlp

@@ -1,0 +1,66 @@
+---
+packages:
+  install:
+    # Generic
+    - balena-etcher-electron
+    - brasero
+    - brasero-nautilus
+    - filezilla
+    - gnome-tweaks
+    - gparted
+    - gramps
+    - htop
+    - iotop
+    - keepassxc
+    - neofetch
+    - nmap
+    - poppler-utils
+
+    # Communication & Remote Desktop
+    - remmina
+    - signal-desktop
+    - https://go.skype.com/skypeforlinux-64.rpm
+    - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
+
+    # Development
+    - autoconf
+    - automake
+    - binutils
+    - bison
+    - flex
+    - gcc
+    - gcc-c++
+    - gdb
+    - glibc-devel
+    - libtool
+    - make
+    - pkgconf
+    - strace
+
+    # Graphics & Design
+    - gimp
+    - inkscape
+
+    # Filesystem Utilities
+    - exfat-utils
+    - fuse-exfat
+
+    # Audio & Video
+    - '@multimedia'
+    - gnome-music
+    - handbrake
+    - peek
+    - picard
+    - vlc
+    - youtube-dl
+
+    # Archive Formats
+    - bzip2
+    - cabextract
+    - lzip
+    - p7zip
+    - p7zip-plugins
+    - unrar
+  remove:
+    - rhythmbox
+    # - totem

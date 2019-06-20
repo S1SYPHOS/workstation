@@ -1,0 +1,33 @@
+---
+gsettings:
+  enable:
+    - /org/gnome/desktop/calendar/show-weekdate
+    - /org/gnome/desktop/interface/clock-show-date
+    - /org/gnome/desktop/interface/clock-show-seconds
+    - /org/gnome/desktop/interface/clock-show-weekday
+    - /org/gnome/desktop/interface/show-battery-percentage
+    - /org/gnome/desktop/peripherals/touchpad/tap-to-click
+  disable:
+    - /org/gnome/desktop/peripherals/touchpad/natural-scroll
+    - /org/gnome/software/download-updates
+    - /org/gnome/system/location/enabled
+    - /org/gnome/Terminal/Legacy/Settings/default-show-menubar
+
+favorite_apps: "['vscodium.desktop', 'org.gnome.Terminal.desktop', 'firefox.desktop', 'org.gnome.Evolution.desktop', 'org.keepassxc.KeePassXC.desktop', 'org.gnome.Nautilus.desktop']"
+
+privacy_settings:
+  - { key: disable-camera, value: "true" }
+  - { key: disable-microphone, value: "true" }
+  - { key: 'old-files-age', value: "uint32 7" }
+  - { key: 'remember-recent-files', value: "false" }
+  - { key: 'remove-old-temp-files', value: "true" }
+  - { key: 'remove-old-trash-files', value: "true" }
+  - { key: 'report-technical-problems', value: "false" }
+
+night_light:
+  - { key: enabled, value: "true" }
+  - { key: temperature, value: "uint32 5000" }
+
+idle:
+  - { key: desktop/session/idle-delay, value: "uint32 0"}
+  - { key: settings-daemon/plugins/power/idle-dim, value: "false" }

@@ -1,0 +1,11 @@
+---
+nautilus_button_layout: "':minimize,maximize,close'"
+
+gedit_settings:
+  - { key: auto-indent, value: "true" }
+  - { key: background-pattern, value: "'grid'" }
+  - { key: display-line-numbers, value: "true" }
+  - { key: highlight-current-line, value: "true" }
+  - { key: insert-spaces, value: "true" }
+  - { key: scheme, value: "'tango'" }
+  - { key: tabs-size, value: "uint32 2" }

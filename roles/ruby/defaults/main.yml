@@ -1,0 +1,12 @@
+---
+ruby_packages:
+  - ruby
+  - ruby-devel
+
+ruby_gems_path: "{{ bin_path }}/ruby"
+
+ruby_gems:
+  - bitters
+  - bourbon
+  - jekyll
+  - neat

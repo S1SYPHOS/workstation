@@ -1,0 +1,9 @@
+---
+vscodium_packages:
+  - dbaeumer.vscode-eslint
+  - formulahendry.code-runner
+  - ms-python.python
+  - redhat.vscode-yaml
+  - redhat.vscode-xml
+  - zhuangtongfa.material-theme
+

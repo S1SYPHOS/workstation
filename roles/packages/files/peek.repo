@@ -1,0 +1,7 @@
+[peek]
+name=Peek Repository for Fedora 26 & later
+type=rpm-md
+baseurl=http://download.opensuse.org/repositories/home:/phiwo:/peek/Fedora_26/
+gpgcheck=1
+gpgkey=http://download.opensuse.org/repositories/home:/phiwo:/peek/Fedora_26/repodata/repomd.xml.key
+enabled=1

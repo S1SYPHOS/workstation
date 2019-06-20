@@ -1,0 +1,41 @@
+---
+- name: GNOME Shell Extensions
+  block:
+  - name: Install Process & System Utilities Module
+    dnf:
+      name: python3-psutil
+      state: present
+    register: psutil
+    become: yes
+
+  - name: Install Shell Extensions @DNF
+    dnf:
+      name: "{{ shell_extensions['install'] }}"
+      state: present
+    become: yes
+
+  - name: Install Shell Extensions @GitHub
+    git:
+      repo: 'https://github.com/mpdeimos/gnome-shell-remove-dropdown-arrows.git'
+      dest: "{{ shell_extension_path }}/remove-dropdown-arrows@mpdeimos.com"
+
+  - name: Enable Shell Extensions
+    dconf:
+      key: /org/gnome/shell/enabled-extensions
+      value: "{{ shell_extensions['enable'] }}"
+    when: psutil is success
+
+  - name: Set Dash-to-Dock Settings
+    dconf:
+      key: "/org/gnome/shell/extensions/dash-to-dock/{{ item.key }}"
+      value: "{{ item.value }}"
+    loop: "{{ dash_to_dock }}"
+
+  - name: Set OpenWeather Settings
+    dconf:
+      key: "/org/gnome/shell/extensions/openweather/{{ item.key }}"
+      value: "{{ item.value }}"
+    loop: "{{ openweather }}"
+
+  tags:
+    - shell-extensions

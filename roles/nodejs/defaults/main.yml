@@ -1,0 +1,17 @@
+---
+nodejs_packages:
+  - nodejs
+  - npm
+
+node_modules_path: "{{ bin_path }}/npm"
+
+node_modules:
+  - gulp
+  - how-2
+  - http-server
+  - npm-check
+  - sass
+  - spoof
+  - terminalizer
+  - yaml2json
+  - yarn

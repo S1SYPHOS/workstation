@@ -1,0 +1,32 @@
+---
+- name: ~ is where ur . files r
+  block:
+    - name: Install requisite Packages
+      dnf:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - rcm
+        - "{{ dotfile_packages }}"
+      become: yes
+
+    - name: Clone dotfiles
+      git:
+        repo: git@github.com:S1SYPHOS/dotfiles.git
+        dest: "{{ dotfile_path }}"
+      ignore_errors: yes
+
+    - name: Include existing Dotfiles
+      command: /usr/bin/mkrc {{ home_path }}/{{ item }} -v
+      changed_when: false
+      loop:
+        - .gemrc
+        - .npmrc
+
+    - name: Symlink all Dotfiles
+      command: /usr/bin/rcup -f
+      changed_when: false
+
+  tags:
+    - base
+    - dotfiles

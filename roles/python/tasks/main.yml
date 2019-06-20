@@ -1,0 +1,37 @@
+---
+- name: Upgrading PIP & installing basic Python Packages
+  block:
+  - name: Install Python Packages
+    dnf:
+      name: "{{ python_packages }}"
+      state: present
+    become: yes
+
+  - name: Get $PYTHONUSERBASE
+    command: echo $PYTHONUSERBASE
+    register: python_userbase
+    changed_when: false
+
+  - name: Add PIP Packages
+    block:
+      - name: Create Directory for PIP Packages
+        file:
+          path: "{{ pip_packages_path }}"
+          state: directory
+
+      - name: Install PIP Packages
+        command: /usr/bin/pip install --user {{ item }}
+        loop: "{{ pip_packages }}"
+        register: install_pip_packages
+        changed_when: '"Successfully installed" in install_pip_packages.stdout'
+
+      - name: Add PIP Binary Path to $PATH
+        copy:
+          dest: /etc/profile.d/python_binaries.sh
+          content: 'PATH=$PATH:{{ pip_packages_path }}/bin'
+        become: yes
+
+    when: '"/.bin/python" in python_userbase.stdout'
+
+  tags:
+    - python

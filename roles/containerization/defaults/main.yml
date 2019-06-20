@@ -1,0 +1,21 @@
+---
+docker_packages:
+  remove:
+    - docker
+    - docker-client
+    - docker-client-latest
+    - docker-common
+    - docker-engine
+    - docker-engine-selinux
+    - docker-latest
+    - docker-latest-logrotate
+    - docker-logrotate
+    - docker-selinux
+  install:
+    - docker-ce
+    - docker-compose
+
+oci_base_path: "{{ vm_path }}/podman"
+oci_volumes_path: "{{ oci_base_path }}/volumes"
+oci_storage_path: "{{ oci_base_path }}/storage"
+oci_conf_path: "{{ conf_path }}/containers"

@@ -1,0 +1,57 @@
+---
+- name: VIRTUALBOX | Installation & Configuration
+  block:
+  - name: Install VirtualBox Dependencies
+    dnf:
+      name: "{{ virtualbox_dependencies }}"
+      state: present
+
+  - name: Add VirtualBox Repository
+    copy:
+      src: "{{ role_path }}/files/virtualbox.repo"
+      dest: /etc/yum.repos.d/virtualbox.repo
+      owner: root
+      group: root
+      mode: 0644
+    tags:
+      - repositories
+
+  - name: Add VirtualBox GPG Keys
+    command: "rpm --import {{ role_path }}/files/oracle_vbox.asc"
+    register: virtualbox_keys
+    changed_when: not virtualbox_keys.stdout == ''
+
+  - name: Install VirtualBox
+    dnf:
+      name: "VirtualBox-{{ virtualbox_version }}"
+      state: present
+
+  - name: Copy VirtualBox Configuration File
+    template:
+      src: VirtualBox.xml.j2
+      dest: "{{ conf_path }}/VirtualBox/VirtualBox.xml"
+    become: no
+    tags:
+      - dotfiles
+
+  - name: Start VirtualBox Drivers
+    command: /sbin/vboxconfig
+    register: virtualbox_drivers
+    changed_when: '"Stopping VirtualBox services" not in virtualbox_drivers.stdout'
+
+  - name: Add User to VirtualBox-related Groups
+    user:
+      name: "{{ user }}"
+      groups: vboxusers
+      append: yes
+
+  # - name: selinux
+  #   seboolean:
+  #     name: use_virtualbox
+  #     state: yes
+  #     persistent: yes
+
+  become: yes
+  tags:
+    - virtualbox
+    - virtualization

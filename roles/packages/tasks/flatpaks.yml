@@ -1,0 +1,37 @@
+---
+# TODO: Make installation recursive once it's merged ..
+# See https://github.com/ansible/ansible/pull/47160
+
+- name: FLATPAK | Add Repository @Flathub
+  flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+  tags:
+    - repositories
+
+- name: FLATPAK | Installing Flatpak Packages
+  block:
+    - name: Install Anki (Flashcard Learning System)
+      flatpak:
+        name: net.ankiweb.Anki
+        state: present
+
+    - name: Authenticator (2FA Application)
+      flatpak:
+        name: com.github.bilelmoussaoui.Authenticator
+        state: present
+
+    - name: Install jDownloader (Download Manager)
+      flatpak:
+        name: org.jdownloader.JDownloader
+        state: present
+
+    - name: Install Scribus (Desktop Publishing)
+      flatpak:
+        name: net.scribus.Scribus
+        state: present
+
+  become: yes
+  tags:
+    - flatpaks

@@ -1,0 +1,16 @@
+---
+python_packages:
+  - python-pep8
+  - python-pip
+  - python2-devel
+  - python3-devel
+
+pip_packages_path: "{{ bin_path }}/python"
+
+pip_packages:
+  - ansible
+  - docker
+  - markdown
+  - molecule
+  - jinja
+  - virtualenv

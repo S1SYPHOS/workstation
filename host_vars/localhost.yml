@@ -1,0 +1,13 @@
+---
+user: two-brain
+user_name: S1SYPHOS
+user_mail: hello@twobrain.io
+
+hostname: workstation
+
+home_path: "/home/{{ user }}"
+conf_path: "{{ home_path }}/.config"
+
+bin_path: "{{ home_path }}/.bin"
+vm_path: "{{ home_path }}/Documents/machines"
+backup_path: "{{ home_path }}/Documents/backups/"

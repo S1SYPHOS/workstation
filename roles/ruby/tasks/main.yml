@@ -1,0 +1,46 @@
+---
+- name: Installing & configuring Ruby & basic Gems
+  block:
+    - name: Install Ruby
+      dnf:
+        name: "{{ ruby_packages }}"
+        state: present
+      become: yes
+
+    - name: Check whether Gem Configuration File exists
+      stat:
+        path: ~/.gemrc
+      register: gem_config_file
+
+    - name: Get Content of Gem Configuration File
+      command: cat ~/.gemrc
+      register: gem_config_bindir
+      changed_when: no
+      when: gem_config_file.stat.islnk is defined
+
+    - name: Add local Ruby Gems
+      block:
+        - name: Create Directory for Gem Binaries
+          file:
+            path: "{{ ruby_gems_path }}"
+            state: directory
+
+        - name: Install local Ruby Gems
+          command: /usr/bin/gem install {{ item }}
+          loop: "{{ ruby_gems }}"
+          register: install_ruby_gems
+          changed_when: '"gem installed" in install_ruby_gems.stdout'
+
+        - name: Add Gem Binary Path to $PATH
+          copy:
+            dest: /etc/profile.d/ruby_binaries.sh
+            content: 'PATH=$PATH:{{ ruby_gems_path }}'
+          become: yes
+
+      when:
+        - gem_config_file.stat.islnk is defined
+        - gem_config_bindir.stdout.find('~/.bin/ruby') != -1
+
+  tags:
+    - ruby
+    - gems

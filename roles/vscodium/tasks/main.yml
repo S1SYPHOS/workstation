@@ -1,0 +1,32 @@
+---
+- name: VSCODIUM | Installation from GitLab Repository
+  block:
+  - name: Add VSCodium Repository
+    copy:
+      src: "{{ role_path }}/files/vscodium.repo"
+      dest: /etc/yum.repos.d/vscodium.repo
+      owner: root
+      group: root
+      mode: 0644
+    tags:
+      - repositories
+
+  - name: Install VSCodium
+    dnf:
+      name: vscodium
+      state: present
+
+  become: yes
+
+- name: Install VSCodium Extensions
+  command: /usr/bin/vscodium --install-extension {{ item | quote }}
+  loop: "{{ vscodium_packages }}"
+  register: vscodium_extension
+  changed_when: '"successfully installed" in vscodium_extension.stdout'
+
+- name: Copy VSCodium Configuration File
+  copy:
+    src: "{{ role_path }}/files/settings.json"
+    dest: "{{ conf_path }}/VSCodium/User/settings.json"
+  tags:
+    - dotfiles

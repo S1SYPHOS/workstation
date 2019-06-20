@@ -1,0 +1,20 @@
+---
+virtualbox_dependencies:
+  - binutils
+  - dkms
+  - gcc
+  - glibc-headers
+  - glibc-devel
+  - kernel-headers
+  - kernel-devel
+  - libgomp
+  - make
+  - patch
+
+vm_tools:
+  - vagrant
+
+virtualbox_version: 6.0
+
+nat_network_name: "{{ hostname | upper }}-NAT"
+

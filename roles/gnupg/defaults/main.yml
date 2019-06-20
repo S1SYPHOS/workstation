@@ -1,0 +1,10 @@
+---
+gnupg_packages:
+  - parcimonie.sh
+  # - seahorse
+  # - seahorse-nautilus
+  - tor
+
+gnupg_services:
+  - parcimonie.sh@all-users.conf
+  - tor

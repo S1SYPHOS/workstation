@@ -1,0 +1,17 @@
+---
+- name: SELinux | Setting up Security-Enhanced Linux
+  block:
+  - name: Write Policy
+    selinux:
+      policy: targeted
+      state: "{{ selinux_policy }}"
+
+  - name: Install dependencies for SELinux module
+    dnf:
+      name: python3-libselinux
+      state: present
+
+  become: yes
+  tags:
+    - selinux
+    - security

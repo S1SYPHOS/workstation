@@ -1,0 +1,49 @@
+---
+- name: Installing & removing Software Packages @DNF
+  block:
+    - name: Add additional Repositories
+      copy:
+        src: "{{ item }}"
+        dest: /etc/yum.repos.d/
+        owner: root
+        group: root
+        mode: 0644
+      with_fileglob:
+        - "{{ role_path }}/files/*.repo"
+        - "{{ role_path }}/files/rpm-fusion/*.repo"
+      tags:
+        - repositories
+
+    - name: Add GPG Keys
+      copy:
+        src: "{{ item }}"
+        dest: /etc/pki/rpm-gpg/
+        owner: root
+        group: root
+        mode: 0644
+      with_fileglob:
+        - "{{ role_path }}/files/rpm-fusion/RPM-GPG-KEY-rpmfusion-*"
+      tags:
+        - repositories
+
+    - name: Install preferred Packages
+      dnf:
+        name: "{{ packages['install'] }}"
+        state: present
+
+    - name: Remove unwanted Packages
+      dnf:
+        name: "{{ packages['remove'] }}"
+        state: absent
+
+  become: yes
+  tags:
+    - base
+
+
+##
+# FLATPAKS
+##
+
+- name: Include Flatpak Packages
+  include: flatpaks.yml

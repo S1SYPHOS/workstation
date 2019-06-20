@@ -1,0 +1,25 @@
+---
+- name: Set the hostname of the machine
+  hostname:
+    name: "{{ hostname }}"
+  when: hostname != ""
+  become: yes
+
+- name: Include Bluetooth
+  include: bluetooth.yml
+
+- name: Limit DNF to keep only two Kernel Versions
+  lineinfile:
+    dest: /etc/dnf/dnf.conf
+    regexp: '^installonly_limit='
+    line: 'installonly_limit=2'
+  become: yes
+
+
+
+##
+# POWER MANAGEMENT
+##
+
+- name: Include TLP
+  include: tlp.yml

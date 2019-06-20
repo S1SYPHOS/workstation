@@ -1,0 +1,84 @@
+---
+- name: Docker
+  block:
+    - name: Add Docker Repository
+      copy:
+        src: "{{ role_path }}/files/docker.repo"
+        dest: /etc/yum.repos.d/docker.repo
+        owner: root
+        group: root
+        mode: 0644
+      tags:
+        - repositories
+
+    - name: Remove deprecated Docker Packages
+      dnf:
+        name: "{{ docker_packages['remove'] }}"
+        state: absent
+
+    - name: Install Docker Packages
+      dnf:
+        name: "{{ docker_packages['install'] }}"
+        state: present
+
+    - name: Copy Docker Configuration File
+      template:
+        src: docker/daemon.json.j2
+        dest: /etc/docker/daemon.json
+        owner: root
+        group: root
+        mode: 0644
+      tags:
+        - dotfiles
+
+    - name: Start Docker Daemon
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Ceate Docker Group
+      group:
+        name: docker
+        state: present
+
+    - name: Add User to Docker Group
+      user:
+        name: "{{ user }}"
+        groups: docker
+        append: yes
+
+  become: yes
+  tags:
+    - docker
+    - containerization
+
+- name: Podman & Buildah
+  block:
+    - name: Install Podman & Buildah
+      dnf:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - podman
+        - buildah
+      become: yes
+
+    - name: Create Directories for Podman & Buildah Configuration Files
+      file:
+        path: "{{ oci_conf_path }}"
+        state: directory
+
+    - name: Copy Podman & Buildah Configuration Files
+      template:
+        src: "oci/{{ item }}.j2"
+        dest: "{{ oci_conf_path }}/{{ item }}"
+      loop:
+        - libpod.conf
+        - storage.conf
+      tags:
+        - dotfiles
+
+  tags:
+    - containerization
+    - oci

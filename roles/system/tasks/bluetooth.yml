@@ -1,0 +1,17 @@
+---
+- name: Stop & Disable Bluetooth
+  block:
+  - name: Stop Bluetooth
+    service:
+      name: bluetooth
+      state: stopped
+  - name: Stop Bluetooth
+    service:
+      name: bluetooth
+      enabled: no
+
+  become: yes
+  tags:
+    - services
+    - connectivity
+    - bluetooth
