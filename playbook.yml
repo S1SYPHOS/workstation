@@ -15,7 +15,6 @@
     - nodejs
     - python
     - vscodium
-    - virtualization
     - containerization
 
     # FORM
@@ -29,3 +28,4 @@
         name: "*"
         state: latest
       become: true
+
