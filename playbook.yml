@@ -8,8 +8,7 @@
     - keybindings
 
     # FUNCTION
-    # TODO: Migrate to dotbot 
-    # - dotfiles
+    - dotfiles
     - php
     - git
     - ruby
