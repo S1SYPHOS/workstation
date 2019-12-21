@@ -31,7 +31,7 @@ composer_packages_path: "{{ bin_path }}/php"
 
 composer_packages:
   - friendsofphp/php-cs-fixer
-  - phploc/phploc
-  - sebastian/phpcpd
+  # - phploc/phploc
+  # - sebastian/phpcpd
   - sensiolabs/security-checker
   - squizlabs/php_codesniffer

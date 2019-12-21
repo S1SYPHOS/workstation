@@ -42,8 +42,16 @@
 
 
 ##
+# VSCODIUM
+##
+
+- name: Include VSCodium package & extensions
+  include: vscodium.yml
+
+
+##
 # FLATPAKS
 ##
 
-- name: Include Flatpak Packages
+- name: Include Flatpak packages
   include: flatpaks.yml

@@ -13,7 +13,7 @@ gsettings:
     - /org/gnome/system/location/enabled
     - /org/gnome/Terminal/Legacy/Settings/default-show-menubar
 
-favorite_apps: "['vscodium.desktop', 'org.gnome.Terminal.desktop', 'firefox.desktop', 'org.gnome.Evolution.desktop', 'org.keepassxc.KeePassXC.desktop', 'org.gnome.Nautilus.desktop']"
+favorite_apps: "['codium.desktop', 'org.gnome.Terminal.desktop', 'firefox.desktop', 'org.gnome.Evolution.desktop', 'org.keepassxc.KeePassXC.desktop', 'org.gnome.Nautilus.desktop']"
 
 privacy_settings:
   - { key: disable-camera, value: "true" }

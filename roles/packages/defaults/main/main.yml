@@ -12,10 +12,20 @@ packages:
     - iotop
     - poppler-utils
 
+    # Network
+    - fping
+
+    # Pentesting & Hacking
+    # TODO: cherrytree
+    - john
+    - hashcat
+    - virt-manager
+
     # Communication & Remote Desktop
+    - evolution
     - remmina
     - signal-desktop
-    - https://go.skype.com/skypeforlinux-64.rpm
+    # - https://go.skype.com/skypeforlinux-64.rpm
     - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
 
     # Development
@@ -45,6 +55,7 @@ packages:
     - '@multimedia'
     - gnome-music
     - handbrake
+    - mediainfo
     - peek
     - picard
     - vlc
@@ -58,5 +69,7 @@ packages:
     - p7zip-plugins
     - unrar
   remove:
+    - gnome-boxes
     - rhythmbox
-    # - totem
+    - totem
+

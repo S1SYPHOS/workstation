@@ -8,13 +8,13 @@
     - keybindings
 
     # FUNCTION
-    - dotfiles
+    # TODO: Migrate to dotbot 
+    # - dotfiles
     - php
     - git
     - ruby
     - nodejs
     - python
-    - vscodium
     - containerization
 
     # FORM

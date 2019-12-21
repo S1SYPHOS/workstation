@@ -16,7 +16,7 @@
     - name: Set favorite Applications
       dconf:
         key: /org/gnome/shell/favorite-apps
-        value: "{{ gsettings['favorite_apps'] }}"
+        value: "{{ favorite_apps }}"
 
     - name: Set GNOME Privacy Settings
       dconf:
@@ -54,12 +54,12 @@
   block:
     - name: Display Folders first in Nautilus
       dconf:
-        key: /org/gtk/settings/file-chooser/sort-directo  ^ries-first
+        key: /org/gtk/settings/file-chooser/sort-directories-first
         value: "true"
 
     - name: Always display Directory Path
       dconf:
-        key: /org/gnome/nautilus/prefere11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111nces/always-use-location-entry
+        key: /org/gnome/nautilus/preferences/always-use-location-entry
         value: "true"
 
     - name: Place min, max & close on upper right

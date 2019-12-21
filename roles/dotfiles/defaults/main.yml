@@ -9,3 +9,4 @@ dotfile_packages:
   - xclip # Used by `cpy` / `pst`
 
 dotfile_path: "{{ home_path }}/.dotfiles"
+
