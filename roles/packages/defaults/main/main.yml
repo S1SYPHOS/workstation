@@ -46,6 +46,7 @@ packages:
     # Graphics & Design
     - gimp
     - inkscape
+    - podman-compose
 
     # Filesystem Utilities
     - exfat-utils
