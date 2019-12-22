@@ -1,13 +1,14 @@
 ---
 python_packages:
-  - python-pep8
-  # - python-pip
   - python3-devel
+  - python3-libselinux
+  - python3-pip
 
 pip_packages_path: "{{ bin_path }}/python"
 
 pip_packages:
   - ansible
+  - black
   - markdown
   - molecule
   - virtualenv

@@ -8,5 +8,6 @@
     "files.trimTrailingWhitespace": true,
     "workbench.editor.tabSizing": "shrink",
     "explorer.sortOrder": "filesFirst",
-    "search.location": "panel"
+    "search.location": "panel",
+    "python.formatting.provider": "black"
 }
