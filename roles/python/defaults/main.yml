@@ -12,3 +12,4 @@ pip_packages:
   - markdown
   - molecule
   - virtualenv
+  - virtualenvwrapper

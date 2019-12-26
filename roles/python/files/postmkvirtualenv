@@ -1,0 +1,9 @@
+#!/bin/bash
+# This hook is sourced after a new virtualenv is activated.
+
+PROJECT=$(basename $VIRTUAL_ENV)
+export PROJECT_HOME=$PWD/$PROJECT
+mkdir -p $PROJECT && cd $PROJECT
+workon $PROJECT
+setvirtualenvproject $VIRTUAL_ENV .
+unset PROJECT_HOME

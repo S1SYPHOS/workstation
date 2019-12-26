@@ -7,6 +7,11 @@
       state: present
     become: yes
 
+  - name: Copy hook files for virtualenvwrapper
+    copy:
+      src: "{{ role_path }}/files/postmkvirtualenv"
+      dest: "{{ home_path }}/.virtualenvs/postmkvirtualenv"
+
   - name: Get $PYTHONUSERBASE
     command: echo $PYTHONUSERBASE
     register: python_userbase
@@ -32,6 +37,3 @@
         become: yes
 
     when: '"/.bin/python" in python_userbase.stdout'
-
-  tags:
-    - python
