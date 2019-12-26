@@ -32,4 +32,3 @@ else
     echo "  ansible-playbook playbook.yml -K"
     echo ""
 fi
-

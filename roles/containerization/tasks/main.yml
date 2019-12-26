@@ -23,9 +23,4 @@
         - libpod.conf
         - storage.conf
       tags:
-        - dotfiles
-
-  tags:
-    - containerization
-    - oci
-
+        - configuration

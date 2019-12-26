@@ -16,7 +16,6 @@
   become: yes
 
 
-
 ##
 # POWER MANAGEMENT
 ##

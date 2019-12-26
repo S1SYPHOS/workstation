@@ -42,5 +42,4 @@
         - gem_config_bindir.stdout.find('~/.bin/ruby') != -1
 
   tags:
-    - ruby
     - gems

@@ -14,7 +14,7 @@
   - name: Import VSCodium repository GPG key
     rpm_key:
       state: present
-      key: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg 
+      key: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
 
   - name: Install VSCodium
     dnf:
@@ -34,4 +34,4 @@
     src: "{{ role_path }}/files/vscodium/settings.json"
     dest: "{{ conf_path }}/VSCodium/User/settings.json"
   tags:
-    - dotfiles
+    - configuration

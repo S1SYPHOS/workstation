@@ -37,6 +37,3 @@
         become: yes
 
     when: '"/.bin/php" in composer_home.stdout'
-
-  tags:
-    - php

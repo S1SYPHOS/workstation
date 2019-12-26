@@ -109,4 +109,3 @@ check_dragora
 ret=$((${ret}+$?))
 
 exit ${ret}
-

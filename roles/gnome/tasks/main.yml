@@ -40,7 +40,7 @@
         value: "{{ item.value }}"
       loop: "{{ idle }}"
       tags:
-        - idle
+        - power
 
   tags:
     - gsettings

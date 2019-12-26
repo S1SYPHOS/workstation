@@ -36,6 +36,3 @@
       key: "/org/gnome/shell/extensions/openweather/{{ item.key }}"
       value: "{{ item.value }}"
     loop: "{{ openweather }}"
-
-  tags:
-    - shell-extensions
