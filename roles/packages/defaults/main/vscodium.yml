@@ -5,4 +5,5 @@ vscodium_packages:
   - ms-python.python
   - redhat.vscode-yaml
   - redhat.vscode-xml
+  - timonwong.shellcheck
   - zhuangtongfa.material-theme

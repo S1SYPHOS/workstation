@@ -43,6 +43,9 @@ packages:
     - pkgconf
     - strace
 
+    # Linting
+    - ShellCheck
+
     # Graphics & Design
     - gimp
     - inkscape
