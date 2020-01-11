@@ -30,10 +30,4 @@
         register: install_composer_packages
         changed_when: '"Nothing to install or update" not in install_composer_packages.stderr'
 
-      - name: Add Composer Binary Path to $PATH
-        copy:
-          dest: /etc/profile.d/composer_binaries.sh
-          content: 'PATH=$PATH:{{ composer_packages_path }}/vendor/bin'
-        become: yes
-
-    when: '"/.bin/php" in composer_home.stdout'
+    when: composer_packages_path in composer_home.stdout

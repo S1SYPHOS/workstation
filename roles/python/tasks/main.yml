@@ -25,15 +25,9 @@
           state: directory
 
       - name: Install PIP Packages
-        command: /usr/bin/pip install --user {{ item }}
+        command: /usr/bin/pip install {{ item }}
         loop: "{{ pip_packages }}"
         register: install_pip_packages
         changed_when: '"Successfully installed" in install_pip_packages.stdout'
 
-      - name: Add PIP Binary Path to $PATH
-        copy:
-          dest: /etc/profile.d/python_binaries.sh
-          content: 'PATH=$PATH:{{ pip_packages_path }}/bin'
-        become: yes
-
-    when: '"/.bin/python" in python_userbase.stdout'
+    when: pip_packages_path in python_userbase.stdout

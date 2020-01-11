@@ -27,7 +27,7 @@ php_packages:
   - composer
   - ImageMagick
 
-composer_packages_path: "{{ bin_path }}/php"
+composer_packages_path: "{{ lib_path }}/php"
 
 composer_packages:
   - friendsofphp/php-cs-fixer

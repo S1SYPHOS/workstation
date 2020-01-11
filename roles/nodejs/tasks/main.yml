@@ -9,11 +9,11 @@
 
   - name: Check whether NPM Configuration File exists
     stat:
-      path: ~/.npmrc
+      path: "{{ npmrc_path }}"
     register: npm_config_file
 
   - name: Get Content of NPM Configuration File
-    command: cat ~/.npmrc
+    command: cat "{{ npmrc_path }}"
     register: npm_config_bindir
     changed_when: no
     when: npm_config_file.stat.islnk is defined
@@ -34,15 +34,9 @@
         register: node_response
         changed_when: '"added" in node_response.stdout'
 
-      - name: Add NPM Binary Path to $PATH
-        copy:
-          dest: /etc/profile.d/npm_binaries.sh
-          content: 'PATH=$PATH:{{ node_modules_path }}/bin'
-        become: yes
-
     when:
       - npm_config_file.stat.islnk is defined
-      - npm_config_bindir.stdout.find('~/.bin/npm') != -1
+      - npm_config_bindir.stdout.find('node_modules_path') != -1
 
   tags:
     - npm

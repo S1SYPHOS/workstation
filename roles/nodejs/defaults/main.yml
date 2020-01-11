@@ -3,7 +3,9 @@ nodejs_packages:
   - nodejs
   - npm
 
-node_modules_path: "{{ bin_path }}/npm"
+node_modules_path: "{{ lib_path }}/npm"
+
+npmrc_path: "{{ conf_path }}/npm/npmrc"
 
 node_modules:
   - gulp

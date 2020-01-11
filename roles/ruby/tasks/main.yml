@@ -9,11 +9,11 @@
 
     - name: Check whether Gem Configuration File exists
       stat:
-        path: ~/.gemrc
+        path: "{{ gemrc_path }}"
       register: gem_config_file
 
     - name: Get Content of Gem Configuration File
-      command: cat ~/.gemrc
+      command: cat "{{ gemrc_path }}"
       register: gem_config_bindir
       changed_when: no
       when: gem_config_file.stat.islnk is defined
@@ -29,17 +29,11 @@
           command: /usr/bin/gem install {{ item }}
           loop: "{{ ruby_gems }}"
           register: install_ruby_gems
-          changed_when: '"gem installed" in install_ruby_gems.stdout'
-
-        - name: Add Gem Binary Path to $PATH
-          copy:
-            dest: /etc/profile.d/ruby_binaries.sh
-            content: 'PATH=$PATH:{{ ruby_gems_path }}'
-          become: yes
+          changed_when: '"Successfully installed" in install_ruby_gems.stdout'
 
       when:
         - gem_config_file.stat.islnk is defined
-        - gem_config_bindir.stdout.find('~/.bin/ruby') != -1
+        - gem_config_bindir.stdout.find(ruby_gems_path) != -1
 
   tags:
     - gems
