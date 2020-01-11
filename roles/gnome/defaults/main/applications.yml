@@ -7,5 +7,5 @@ gedit_settings:
   - { key: display-line-numbers, value: "true" }
   - { key: highlight-current-line, value: "true" }
   - { key: insert-spaces, value: "true" }
-  - { key: scheme, value: "'tango'" }
+  - { key: scheme, value: "'nord-gedit'" }
   - { key: tabs-size, value: "uint32 2" }
