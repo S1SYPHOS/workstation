@@ -29,9 +29,3 @@
   register: vscodium_extension
   changed_when: '"successfully installed" in vscodium_extension.stdout'
 
-- name: Copy VSCodium Configuration File
-  copy:
-    src: "{{ role_path }}/files/vscodium/settings.json"
-    dest: "{{ conf_path }}/VSCodium/User/settings.json"
-  tags:
-    - configuration
