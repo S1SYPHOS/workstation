@@ -1,34 +1,8 @@
 ---
 packages:
   install:
-    # Generic
-    - balena-etcher-electron
-    - brasero
-    - brasero-nautilus
-    - filezilla
-    - gnome-tweaks
-    - gparted
-    - gramps
-    - iotop
-    - poppler-utils
-
-    # Network
-    - fping
-
-    # Pentesting & Hacking
-    # TODO: cherrytree
-    - john
-    - hashcat
-    - virt-manager
-
-    # Communication & Remote Desktop
-    - evolution
-    - remmina
-    - signal-desktop
-    # - https://go.skype.com/skypeforlinux-64.rpm
-    - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
-
-    # Development
+    ## System
+    # TODO: Add group-install for C dev tools & security lab
     - autoconf
     - automake
     - binutils
@@ -43,20 +17,49 @@ packages:
     - pkgconf
     - strace
 
-    # Linting
-    - ShellCheck
+    # Network
+    - fping                               # scriptable, parallelized ping-like utility
+    - iotop
 
-    # Graphics & Design
-    - gimp
-    - inkscape
+    # Fonts
+    - adobe-source-sans-pro-fonts
+    - fira-code-fonts
+    - lato-fonts
+    - levien-inconsolata-fonts
+
+    # Communication
+    - evolution                           # mail client
+    - signal-desktop                      # secure messenger
+
+
+    ## Coding & CLI
+    - kitty                               # terminal emulator
+    - ShellCheck                          # shell script analysis tool & linter
+    - tmux                                # terminal multiplexer
+    - vim                                 # code editor
+
+    # Virtualization & Containerization
+    - libvirt                             # virtualization toolkit
     - podman-compose
+    - virt-manager                        # virtual machine manager
 
-    # Filesystem Utilities
-    - exfat-utils
-    - fuse-exfat
+
+    ## Productivity
+    - cherrytree                          # hierarchical note taking application
+    - gramps                              # genealogy
+    - foliate                             # ebook reader
+
+    # Remote servicing
+    - filezilla                           # (s)ftp(s) client
+    - remmina                             # remote desktop
+    - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
+
+
+    ## Multimedia
 
     # Audio & Video
-    - '@multimedia'
+    - brasero                             # burning cds & dvds
+    - brasero-nautilus
     - gnome-music
     - handbrake
     - mediainfo
@@ -65,13 +68,33 @@ packages:
     - vlc
     - youtube-dl
 
-    # Archive Formats
+    # Graphics & Photography
+    - gimp
+    - inkscape
+    - nautilus-image-converter
+
+
+    ## Utilities
+    - gnome-tweaks
+    - hashcat                             # gpu-based password cracker
+    - john                                # cpu-based password cracker
+    - perl-Filesys-Df                     # disk usage
+    - poppler-utils
+
+    # Compression
     - bzip2
     - cabextract
     - lzip
     - p7zip
     - p7zip-plugins
     - unrar
+
+    # Partitioning & Filesystem
+    - balena-etcher-electron
+    - exfat-utils
+    - fuse-exfat
+    - gparted
+
   remove:
     - gnome-boxes
     - rhythmbox
