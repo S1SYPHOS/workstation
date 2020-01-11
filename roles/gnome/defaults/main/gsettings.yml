@@ -26,7 +26,7 @@ privacy_settings:
 
 night_light:
   - { key: enabled, value: "true" }
-  - { key: temperature, value: "uint32 5000" }
+  - { key: temperature, value: "uint32 2700" }
 
 idle:
   - { key: desktop/session/idle-delay, value: "uint32 0"}
