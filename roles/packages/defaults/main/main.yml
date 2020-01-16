@@ -26,6 +26,8 @@ packages:
     - fira-code-fonts
     - lato-fonts
     - levien-inconsolata-fonts
+    - mozilla-fira-mono-fonts
+    - mozilla-fira-sans-fonts
 
     # Communication
     - evolution                           # mail client
@@ -75,6 +77,7 @@ packages:
 
 
     ## Utilities
+    - aria2                               # download utility
     - gnome-tweaks
     - hashcat                             # gpu-based password cracker
     - john                                # cpu-based password cracker
