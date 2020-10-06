@@ -5,6 +5,7 @@ packages:
     # TODO: Add group-install for C dev tools & security lab
     - autoconf
     - automake
+    - bat
     - binutils
     - bison
     - flex
