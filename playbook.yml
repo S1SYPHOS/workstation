@@ -12,6 +12,7 @@
     - php
     - git
     - ruby
+    - rust
     - nodejs
     - python
     - containerization
@@ -27,4 +28,3 @@
         name: "*"
         state: latest
       become: true
-

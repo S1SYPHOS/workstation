@@ -1,0 +1,31 @@
+---
+- name: Check if `rustup` & `cargo` are already installed
+  shell: command -v cargo
+  ignore_errors: yes
+  changed_when: false
+  register: rustup_installed
+
+- name: Install Rust (via `rustup`)
+  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  when: rustup_installed.failed == true
+
+- name: Install shell completion for Rust
+  block:
+  - name: Create directory
+    file:
+      path: /etc/bash_completion.d
+      state: directory
+      recurse: yes
+
+  - name: Add shell completion file
+    shell: "{{ cargo_path }}/bin/rustup completions bash > /etc/bash_completion.d/rustup.bash-completion"
+    args:
+      creates: /etc/bash_completion.d/rustup.bash-completion
+
+  become: yes
+
+- name: Install crates
+  shell: cargo install {{ item }}
+  with_items: "{{ crates }}"
+  register: install_status
+  changed_when: "'already installed' not in install_status.stderr"

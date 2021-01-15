@@ -1,0 +1,15 @@
+---
+cargo_path: "{{ lib_path }}/.rust"
+
+crates:
+  # du + rust = dust. Like du but more intuitive
+  # See https://github.com/bootandy/dust
+  - du-dust
+
+  # A terminal interface for StackOverflow written in Rust
+  # See https://github.com/samtay/so
+  - so
+
+  # Terminal bandwidth utilization tool
+  # See https://github.com/imsnif/bandwhich
+  - bandwhich
