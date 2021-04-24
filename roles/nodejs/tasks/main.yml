@@ -1,42 +1,26 @@
 ---
-- name: Install & configure NodeJS, NPM & basic Modules
+- name: Installing NodeJS, NPM & modules
   block:
-  - name: Install NodeJS & NPM
-    dnf:
-      name: "{{ nodejs_packages }}"
+  - name: Installing NodeJS & NPM
+    apt:
+      name: "{{ node_packages }}"
       state: present
-    become: yes
+    become: true
 
-  - name: Check whether NPM Configuration File exists
-    stat:
-      path: "{{ npmrc_path }}"
-    register: npm_config_file
+  - name: Creating directories
+    file:
+      path: "{{ node_modules_path }}/{{ item }}"
+      state: directory
+    loop:
+      - bin
+      - lib
 
-  - name: Get Content of NPM Configuration File
-    command: cat "{{ npmrc_path }}"
-    register: npm_config_bindir
-    changed_when: no
-    when: npm_config_file.stat.islnk is defined
-
-  - name: Add local Node Modules
-    block:
-      - name: Create Directories for local Node Modules
-        file:
-          path: "{{ node_modules_path }}/{{ item }}"
-          state: directory
-        loop:
-          - bin
-          - lib
-
-      - name: Install local Node Modules
-        command: /usr/bin/npm install -g {{ item }}
-        loop: "{{ node_modules }}"
-        register: node_response
-        changed_when: '"added" in node_response.stdout'
-
-    when:
-      - npm_config_file.stat.islnk is defined
-      - npm_config_bindir.stdout.find('node_modules_path') != -1
+  - name: Installing Node modules
+    npm:
+      name: "{{ item }}"
+      state: present
+      global: true
+    loop: "{{ node_modules }}"
 
   tags:
-    - npm
+    - node
