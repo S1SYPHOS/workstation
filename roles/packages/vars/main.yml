@@ -1,2 +1,4 @@
 ---
-keepassxc_db_name: password_db.kdbx
+homebrew_tmp: "/tmp/homebrew"
+homebrew_url: "https://raw.githubusercontent.com/Homebrew/install/master/install.sh"
+homebrew_checksum: "sha256:45c12bcd7765986674142230fc0860f5274903adbe37d582e5537771a1bae0b8"
