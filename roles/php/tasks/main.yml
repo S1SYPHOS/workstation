@@ -1,33 +1,26 @@
 ---
-- name: Installing & configuring PHP with Modules & basic Extensions
+- name: Installing PHP & Composer packages
   block:
-  - name: Install PHP & PHP Extensions
-    dnf:
+  - name: Installing PHP & extensions
+    apt:
       name: "{{ php_packages }}"
       state: present
-    become: yes
+    become: true
 
-  # TODO: Really needed?
-  # - name: Install PEAR Packages
-  #   command: /usr/bin/pecl install {{ item }}
-  #   loop: "{{ pear_packages }}"
+  - name: Creating directories
+    file:
+      path:  "{{ composer_packages_path }}"
+      state: directory
 
-  - name: Get $COMPOSER_HOME
-    command: echo $COMPOSER_HOME
-    register: composer_home
-    changed_when: false
+  - name: Installing Composer packages
+    composer:
+      command: require
+      global_command: yes
+      arguments: "{{ item }}"
+    loop: "{{ composer_packages }}"
 
-  - name: Add Composer Packages
-    block:
-      - name: Create Directory for PHP Packages
-        file:
-          path:  "{{ composer_packages_path }}"
-          state: directory
-
-      - name: Install Composer Packages
-        command: /usr/bin/composer global require {{ item }}
-        loop: "{{ composer_packages }}"
-        register: install_composer_packages
-        changed_when: '"Nothing to install or update" not in install_composer_packages.stderr'
-
-    when: composer_packages_path in composer_home.stdout
+  # - name: Installing Composer packages
+  #   command: /usr/bin/composer global require {{ item }}
+  #   loop: "{{ composer_packages }}"
+  #   register: install_composer_packages
+  #   changed_when: '"Nothing to install or update" not in install_composer_packages.stderr'

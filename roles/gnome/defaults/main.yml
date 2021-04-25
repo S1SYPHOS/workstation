@@ -1,19 +1,18 @@
 ---
 gsettings:
   enable:
-    - /org/gnome/desktop/calendar/show-weekdate
-    - /org/gnome/desktop/interface/clock-show-date
     - /org/gnome/desktop/interface/clock-show-seconds
     - /org/gnome/desktop/interface/clock-show-weekday
     - /org/gnome/desktop/interface/show-battery-percentage
-    - /org/gnome/desktop/peripherals/touchpad/tap-to-click
+    - /org/gnome/nautilus/preferences/always-use-location-entry
   disable:
     - /org/gnome/desktop/peripherals/touchpad/natural-scroll
     - /org/gnome/software/download-updates
     - /org/gnome/system/location/enabled
-    - /org/gnome/Terminal/Legacy/Settings/default-show-menubar
 
-favorite_apps: "['codium.desktop', 'org.gnome.Terminal.desktop', 'firefox.desktop', 'org.gnome.Evolution.desktop', 'org.keepassxc.KeePassXC.desktop', 'org.gnome.Nautilus.desktop']"
+favorite_apps: "['codium.desktop', 'kitty.desktop', 'firefox.desktop', 'org.gnome.Evolution.desktop', 'org.keepassxc.KeePassXC.desktop', 'org.gnome.Nautilus.desktop']"
+
+button_layout: "'appmenu:minimize,maximize,close'"
 
 privacy_settings:
   - { key: disable-camera, value: "true" }
@@ -28,6 +27,15 @@ night_light:
   - { key: enabled, value: "true" }
   - { key: temperature, value: "uint32 2700" }
 
-idle:
+power:
   - { key: desktop/session/idle-delay, value: "uint32 0"}
   - { key: settings-daemon/plugins/power/idle-dim, value: "false" }
+
+gedit_settings:
+  - { key: auto-indent, value: "true" }
+  - { key: background-pattern, value: "'grid'" }
+  - { key: display-line-numbers, value: "true" }
+  - { key: highlight-current-line, value: "true" }
+  - { key: insert-spaces, value: "true" }
+  - { key: scheme, value: "'nord-gedit'" }
+  - { key: tabs-size, value: "uint32 4" }

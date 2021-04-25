@@ -1,39 +1,22 @@
 ---
-- name: Installing & configuring Ruby & basic Gems
+- name: Installing Ruby & gems
   block:
-    - name: Install Ruby
-      dnf:
+    - name: Installing Ruby
+      apt:
         name: "{{ ruby_packages }}"
         state: present
-      become: yes
+      become: true
 
-    - name: Check whether Gem Configuration File exists
-      stat:
-        path: "{{ gemrc_path }}"
-      register: gem_config_file
+    - name: Creating directories
+      file:
+        path: "{{ ruby_gems_path }}"
+        state: directory
 
-    - name: Get Content of Gem Configuration File
-      command: cat "{{ gemrc_path }}"
-      register: gem_config_bindir
-      changed_when: no
-      when: gem_config_file.stat.islnk is defined
-
-    - name: Add local Ruby Gems
-      block:
-        - name: Create Directory for Gem Binaries
-          file:
-            path: "{{ ruby_gems_path }}"
-            state: directory
-
-        - name: Install local Ruby Gems
-          command: /usr/bin/gem install {{ item }}
-          loop: "{{ ruby_gems }}"
-          register: install_ruby_gems
-          changed_when: '"Successfully installed" in install_ruby_gems.stdout'
-
-      when:
-        - gem_config_file.stat.islnk is defined
-        - gem_config_bindir.stdout.find(ruby_gems_path) != -1
+    - name: Installing local Ruby gems
+      gem:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ ruby_gems }}"
 
   tags:
-    - gems
+    - ruby

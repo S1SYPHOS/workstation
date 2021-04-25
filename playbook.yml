@@ -1,30 +1,39 @@
 ---
-- name: Set up Fedora Workstation - the @S1SYPHOS way.
-  hosts: local
+# Personal Workstation - the @S1SYPHOS way
+- hosts: all
+  vars:
+    user: two-brain
+    user_name: S1SYPHOS
+    user_mail: hello@twobrain.io
+
+    hostname: workstation
+
+    home_path: "/home/{{ user }}"
+    conf_path: "{{ home_path }}/.config"
+    local_path: "{{ home_path }}/.local"
+
+    lib_path: "{{ local_path }}/lib"
+    vm_path: "{{ home_path }}/Documents/machines"
+    backup_path: "{{ home_path }}/Documents/backups/"
+
   roles:
     # BASE
     - system
     - packages
-    - keybindings
-
-    # FUNCTION
-    - dotfiles
-    - php
-    - git
-    - ruby
-    - rust
-    - nodejs
-    - python
-    - containerization
-
-    # FORM
     - gnome
-    - themes
-    - shell_extensions
+    - dotfiles
+
+    # DEVELOPMENT
+    - infrastructure
+    - python
+    - nodejs
+    - rust
+    - ruby
+    - php
 
   pre_tasks:
-    - name: Update Packages
-      dnf:
+    - name: Updating system packages
+      apt:
         name: "*"
         state: latest
       become: true
