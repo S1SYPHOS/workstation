@@ -1,6 +1,0 @@
----
-git_packages:
-  - git
-  - git-extras
-  - meld
-  - https://release.gitkraken.com/linux/gitkraken-amd64.rpm

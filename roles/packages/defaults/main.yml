@@ -10,9 +10,13 @@ packages:
 
     # Coding & CLI
     - codium                              # VSCodium — VS Code without telemetry
+    - git                                 # fast, scalable, distributed revision control system
+    - git-extras                          # Extra commands for git
     - kitty                               # fast, featureful, GPU based terminal emulator
-    - shellcheck                          # lint tool for shell scripts
+    # TODO: Replace in git config
+    - meld                                # graphical tool to diff and merge files
     - neovim                              # heavily refactored vim fork
+    - shellcheck                          # lint tool for shell scripts
 
     # Virtualization & Containerization
     # TODO: Move
@@ -128,10 +132,18 @@ packages:
     - totem                               # Simple media player for the GNOME desktop based on GStreamer
 
 
+homebrew_tmp: "/tmp/homebrew"
+homebrew_url: "https://raw.githubusercontent.com/Homebrew/install/master/install.sh"
+homebrew_checksum: "md5:11cd2f77773c6723eca451869f18d97e"
+
 homebrew_packages:
+  - bandwhich                             # Terminal bandwidth utilization tool
+  - dust                                  # More intuitive version of du in rust
+  - gh                                    # GitHub command-line tool
   - gitui                                 # Blazing fast terminal-ui for git written in rust
+  - mdcat                                 # Show markdown documents on text terminals
   - procs                                 # Modern replacement for ps
-  - so                                    # A terminal interface for Stack Overflow
+  - so                                    # Terminal interface for StackOverflow
   - starship                              # The minimal, blazing-fast, and infinitely customizable prompt for any shell
   - tealdeer                              # A very fast implementation of tldr in Rust
 

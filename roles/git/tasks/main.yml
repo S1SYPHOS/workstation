@@ -1,6 +1,0 @@
----
-- name: Install Git Packages
-  dnf:
-    name: "{{ git_packages }}"
-    state: present
-  become: yes
