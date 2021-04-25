@@ -105,6 +105,7 @@ packages:
     - ripgrep                             # Recursively searches directories for a regex pattern
     - s-tui                               # terminal UI for monitoring your computer
     - udiskie                             # automounter for removable media for Python
+    - tor                                 # anonymizing overlay network for TCP
 
     # File manager extensions
     - nautilus-admin                      # Extension for Nautilus to do administrative operations
