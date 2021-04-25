@@ -1,46 +1,81 @@
 ---
-- name: Enabling GSettings
-  dconf:
-    key: "{{ item }}"
-    value: "true"
-  loop: "{{ gsettings['enable'] }}"
+- name: Changing GSettings
+  block:
+    - name: Enable GSettings
+      dconf:
+        key: "{{ item }}"
+        value: "true"
+      loop: "{{ gsettings['enable'] }}"
 
-- name: Disabling GSettings
-  dconf:
-    key: "{{ item }}"
-    value: "false"
-  loop: "{{ gsettings['disable'] }}"
+    - name: Disable GSettings
+      dconf:
+        key: "{{ item }}"
+        value: "false"
+      loop: "{{ gsettings['disable'] }}"
 
-- name: Setting favorite apps
-  dconf:
-    key: /org/gnome/shell/favorite-apps
-    value: "{{ favorite_apps }}"
+    - name: Set favorite Applications
+      dconf:
+        key: /org/gnome/shell/favorite-apps
+        value: "{{ favorite_apps }}"
 
-- name: Adjusting window button layout
-  dconf:
-    key: /org/gnome/desktop/wm/preferences/button-layout
-    value: "{{ button_layout }}"
+    - name: Set GNOME Privacy Settings
+      dconf:
+        key: "/org/gnome/shell/privacy/{{ item.key }}"
+        value: "{{ item.value }}"
+      loop: "{{ privacy_settings }}"
+      tags:
+        - privacy
 
-- name: Adjusting GNOME privacy settings
-  dconf:
-    key: "/org/gnome/desktop/privacy/{{ item.key }}"
-    value: "{{ item.value }}"
-  loop: "{{ privacy_settings }}"
+    - name: Enable GNOME Night Light
+      dconf:
+        key: "/org/gnome/settings-daemon/plugins/color/night-light-{{item.key}}"
+        value: "{{ item.value }}"
+      loop: "{{ night_light }}"
+      tags:
+        - night-light
 
-- name: Enabling GNOME night light
-  dconf:
-    key: "/org/gnome/settings-daemon/plugins/color/night-light-{{item.key}}"
-    value: "{{ item.value }}"
-  loop: "{{ night_light }}"
+    - name: Disable Dim & Blank Screen on idle
+      dconf:
+        key: "/org/gnome/{{item.key}}"
+        value: "{{ item.value }}"
+      loop: "{{ idle }}"
+      tags:
+        - power
 
-- name: Adjusting power settings
-  dconf:
-    key: "/org/gnome/{{item.key}}"
-    value: "{{ item.value }}"
-  loop: "{{ power }}"
+  tags:
+    - gsettings
 
-- name: Configuring GNOME text editor
+
+###
+# APPLICATIONS
+###
+
+- name: GNOME File Manager - Nautilus
+  block:
+    - name: Display Folders first in Nautilus
+      dconf:
+        key: /org/gtk/settings/file-chooser/sort-directories-first
+        value: "true"
+
+    - name: Always display Directory Path
+      dconf:
+        key: /org/gnome/nautilus/preferences/always-use-location-entry
+        value: "true"
+
+    - name: Place min, max & close on upper right
+      dconf:
+        key: /org/gnome/desktop/wm/preferences/button-layout
+        value: "{{ nautilus_button_layout }}"
+
+  tags:
+    - gsettings
+    - nautilus
+
+- name: GNOME Text Editor - GEdit
   dconf:
     key: "/org/gnome/gedit/preferences/editor/{{ item.key }}"
     value: "{{ item.value }}"
   loop: "{{ gedit_settings }}"
+  tags:
+    - gsettings
+    - gedit

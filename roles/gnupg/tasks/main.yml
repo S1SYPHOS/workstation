@@ -1,0 +1,21 @@
+---
+- name: Install GnuPG Packages
+  dnf:
+    name: "{{ gnupg_packages }}"
+    state: present
+  become: yes
+  tags:
+    - security
+    - cryptography
+
+- name: Start GnuPG Services
+  service:
+    name: "{{ gnupg_services }}"
+    state: started
+  become: yes
+
+- name: Enable GnuPG Services
+  service:
+    name: "{{ gnupg_services }}"
+    enabled: true
+  become: yes

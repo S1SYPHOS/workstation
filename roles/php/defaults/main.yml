@@ -1,25 +1,37 @@
 ---
 php_packages:
-  - composer
-  - imagemagick
+  # PHP
   - php-cli
-  - php-dev
+  - php-devel
+
+  # Modules
   - php-bcmath
   - php-curl
   - php-gd
-  - php-imagick
   - php-json
   - php-mbstring
+  - php-mcrypt
   - php-soap
   - php-xml
-  - php-yaml
   - php-zip
+
+  # PHP Extension and Application Repository (PEAR)
+  # which provides the PHP Extension Community Library (PECL)
+  - php-pear
+
+  # PECL Etensions
+  - php-pecl-imagick
+  - php-pecl-yaml
+
+  # Third Party
+  - composer
+  - ImageMagick
 
 composer_packages_path: "{{ lib_path }}/php"
 
 composer_packages:
   - friendsofphp/php-cs-fixer
-  - phploc/phploc
-  - sebastian/phpcpd
+  # - phploc/phploc
+  # - sebastian/phpcpd
   - sensiolabs/security-checker
   - squizlabs/php_codesniffer

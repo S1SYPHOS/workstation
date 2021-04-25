@@ -1,12 +1,19 @@
 ---
-rustup_tmp: "/tmp/rustup"
-rustup_url: "https://sh.rustup.rs"
-rustup_checksum: "md5:f9a1374a38d8c9f013b3827188cf4bf2"
-rustup_completion: "/etc/bash_completion.d/rustup_completion"
+cargo_path: "{{ lib_path }}/.rust"
 
-cargo_path: "{{ lib_path }}/rust"
+crates:
+  # Terminal bandwidth utilization tool
+  # See https://github.com/imsnif/bandwhich
+  - bandwhich
 
-cargo_crates:
-  - csview                                # A high performance csv viewer with cjk/emoji support
-  - rates                                 # Currency exchange rates in your terminal
-  - shellcaster                           # Terminal-based podcast manager built in Rust
+  # du + rust = dust. Like du but more intuitive
+  # See https://github.com/bootandy/dust
+  - du-dust
+
+  # cat for markdown
+  # See https://github.com/lunaryorn/mdcat
+  - mdcat
+
+  # A terminal interface for StackOverflow written in Rust
+  # See https://github.com/samtay/so
+  - so

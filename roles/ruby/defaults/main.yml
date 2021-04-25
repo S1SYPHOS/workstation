@@ -1,9 +1,11 @@
 ---
 ruby_packages:
   - ruby
-  - ruby-dev
+  - ruby-devel
 
 ruby_gems_path: "{{ lib_path }}/ruby"
+
+gemrc_path: "{{ conf_path }}/gem/gemrc"
 
 ruby_gems:
   - bitters

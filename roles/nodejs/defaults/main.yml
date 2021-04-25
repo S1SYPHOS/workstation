@@ -1,14 +1,19 @@
 ---
-node_packages:
+nodejs_packages:
   - nodejs
   - npm
 
 node_modules_path: "{{ lib_path }}/npm"
 
+npmrc_path: "{{ conf_path }}/npm/npmrc"
+
 node_modules:
-  - gulp                                  # The streaming build system
-  - npm-check                             # Check for outdated, incorrect, and unused dependencies
-  - speed-test                            # Test your internet connection speed and ping using speedtest.net from the CLI
-  - spoof                                 # Easily spoof your MAC address in OS X & Linux
-  - yaml2json                             # A commandline utility to convert YAML / YML to JSON
-  - yarn                                  # Fast, reliable, and secure dependency management
+  - gulp
+  - how-2
+  - http-server
+  - npm-check
+  - sass
+  - spoof
+  - terminalizer
+  - yaml2json
+  - yarn

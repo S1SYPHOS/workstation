@@ -1,0 +1,5 @@
+---
+selinux_policy: enforcing
+
+permitted_services:
+  - ssh

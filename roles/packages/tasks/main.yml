@@ -1,120 +1,57 @@
 ---
-- name: Managing system packages
+- name: Installing & removing Software Packages @DNF
   block:
-    - name: Adding Teamviewer repository
+    - name: Add additional Repositories
       copy:
-        src: "{{ role_path }}/files/teamviewer.list"
-        dest: /etc/apt/sources.list.d/
+        src: "{{ item }}"
+        dest: /etc/yum.repos.d/
         owner: root
         group: root
         mode: 0644
+      with_fileglob:
+        - "{{ role_path }}/files/*.repo"
+        - "{{ role_path }}/files/rpm-fusion/*.repo"
+      tags:
+        - repositories
 
-    - name: Adding Teamviewer signing key
-      apt_key:
-        url: https://download.teamviewer.com/download/linux/signature/TeamViewer2017.asc
-        state: present
+    - name: Add GPG Keys
+      copy:
+        src: "{{ item }}"
+        dest: /etc/pki/rpm-gpg/
+        owner: root
+        group: root
+        mode: 0644
+      with_fileglob:
+        - "{{ role_path }}/files/rpm-fusion/RPM-GPG-KEY-rpmfusion-*"
+      tags:
+        - repositories
 
-    - name: Installing wanted system packages
-      apt:
+    - name: Install preferred Packages
+      dnf:
         name: "{{ packages['install'] }}"
         state: present
-        update_cache: true
 
-    - name: Removing unwanted system packages
-      apt:
+    - name: Remove unwanted Packages
+      dnf:
         name: "{{ packages['remove'] }}"
         state: absent
 
-  ignore_errors: true
-  become: true
+  become: yes
   tags:
     - base
 
 
-- name: Checking if Homebrew is already installed
-  stat:
-    path: /home/linuxbrew/.linuxbrew/bin/brew
-  register: homebrew_installed
-  become: true
+##
+# VSCODIUM
+##
 
-- name: Installing Homebrew package manager
-  block:
-  - name: Creating temporary directory
-    file:
-      path: "{{ homebrew_tmp }}"
-      state: directory
-
-  - name: Downloading installation script
-    get_url:
-      url: "{{ homebrew_url }}"
-      dest: "{{ homebrew_tmp }}/install.sh"
-      checksum: "{{ homebrew_checksum }}"
-      mode: 0777
-
-  - name: Installing Homebrew
-    command: sh -c "{{ homebrew_tmp }}/install.sh"
-    register: install_result
-    changed_when: "install_result.rc == 0"
-
-  - name: Removing temporary directory
-    file:
-      path: "{{ homebrew_tmp }}"
-      state: absent
-
-  when: not homebrew_installed.stat.exists
-
-- name: Installing Homebrew packages
-  homebrew:
-    name: "{{ homebrew_packages }}"
-    state: present
+- name: Include VSCodium package & extensions
+  include: vscodium.yml
 
 
-- name: Enabling Flathub & installing Flatpaks
-  block:
-  # TODO: Make installation recursive once it's merged ..
-  # See https://github.com/ansible/ansible/pull/47160
-  - name: Adding Flathub repository
-    flatpak_remote:
-      name: flathub
-      state: present
-      flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-    tags:
-      - repositories
+##
+# FLATPAKS
+##
 
-  - name: Installing Flatpak packages
-    block:
-      # Generate Two-Factor Codes
-      - name: Installing Authenticator
-        flatpak:
-          name: com.github.bilelmoussaoui.Authenticator
-          state: present
-
-      # A simple and modern eBook viewer
-      - name: Installing Foliate
-        flatpak:
-          name: com.github.johnfactotum.Foliate
-          state: present
-
-      # Download management tool
-      - name: Installing jDownloader
-        flatpak:
-          name: org.jdownloader.JDownloader
-          state: present
-
-      # Private messenger
-      - name: Installing Signal Desktop
-        flatpak:
-          name: org.signal.Signal
-          state: present
-
-  become: true
-  tags:
-    - flatpak
-
-
-- name: Installing Codium extensions
-  command: /usr/bin/codium --install-extension {{ item | quote }}
-  loop: "{{ codium_packages }}"
-  # TODO: Repair changed_when
-  # register: codium_extension
-  # changed_when: '"successfully installed" in codium_extension.stdout'
+- name: Include Flatpak packages
+  include: flatpaks.yml

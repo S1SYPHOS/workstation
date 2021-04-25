@@ -1,19 +1,33 @@
 ---
-- name: Installing PIP & packages
+- name: Upgrading PIP & installing basic Python Packages
   block:
-  - name: Installing PIP
-    apt:
+  - name: Install Python Packages
+    dnf:
       name: "{{ python_packages }}"
       state: present
-    become: true
+    become: yes
 
-  - name: Creating directories
-    file:
-      path: "{{ pip_packages_path }}"
-      state: directory
+  - name: Copy hook files for virtualenvwrapper
+    copy:
+      src: "{{ role_path }}/files/postmkvirtualenv"
+      dest: "{{ home_path }}/.virtualenvs/postmkvirtualenv"
 
-  - name: Installing PIP Packages
-    pip:
-      name: "{{ item }}"
-      state: present
-    loop: "{{ pip_packages }}"
+  - name: Get $PYTHONUSERBASE
+    command: echo $PYTHONUSERBASE
+    register: python_userbase
+    changed_when: false
+
+  - name: Add PIP Packages
+    block:
+      - name: Create Directory for PIP Packages
+        file:
+          path: "{{ pip_packages_path }}"
+          state: directory
+
+      - name: Install PIP Packages
+        command: /usr/bin/pip install {{ item }}
+        loop: "{{ pip_packages }}"
+        register: install_pip_packages
+        changed_when: '"Successfully installed" in install_pip_packages.stdout'
+
+    when: pip_packages_path in python_userbase.stdout

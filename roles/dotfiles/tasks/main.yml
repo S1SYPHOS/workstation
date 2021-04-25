@@ -1,20 +1,23 @@
 ---
-- name: Checking if dotfiles already exist
-  stat:
-    path: "{{ dotfile_path }}"
-  register: dotfiles_cloned
-
 - name: ~ is where ur . files r
   block:
-    - name: Cloning dotfiles
+    - name: Install requisite Packages
+      dnf:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ dotfile_packages }}"
+      become: yes
+
+    - name: Clone dotfiles
       git:
         repo: git@github.com:S1SYPHOS/dotfiles.git
         dest: "{{ dotfile_path }}"
-      ignore_errors: true
-      become: true
+      ignore_errors: yes
 
-    - name: Symlinking dotfiles
+    - name: Symlink all Dotfiles
       command: "{{ dotfile_path }}/install.sh"
       changed_when: false
 
-  when: not dotfiles_cloned.stat.exists
+  tags:
+    - base
+    - configuration

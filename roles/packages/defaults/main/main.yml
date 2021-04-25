@@ -1,0 +1,105 @@
+---
+packages:
+  install:
+    ## System
+    # TODO: Add group-install for C dev tools & security lab
+    - autoconf
+    - automake
+    - bat
+    - binutils
+    - bison
+    - flex
+    - gcc
+    - gcc-c++
+    - gdb
+    - glibc-devel
+    - libtool
+    - make
+    - pkgconf
+    - strace
+
+    # Network
+    - fping                               # scriptable, parallelized ping-like utility
+    - iotop
+
+    # Fonts
+    - adobe-source-sans-pro-fonts
+    - fira-code-fonts
+    - lato-fonts
+    - levien-inconsolata-fonts
+    - mozilla-fira-mono-fonts
+    - mozilla-fira-sans-fonts
+
+    # Communication
+    - evolution                           # mail client
+    - signal-desktop                      # secure messenger
+
+
+    ## Coding & CLI
+    - kitty                               # terminal emulator
+    - ShellCheck                          # shell script analysis tool & linter
+    - tmux                                # terminal multiplexer
+    - vim                                 # code editor
+
+    # Virtualization & Containerization
+    - libvirt                             # virtualization toolkit
+    - podman-compose
+    - virt-manager                        # virtual machine manager
+
+
+    ## Productivity
+    - cherrytree                          # hierarchical note taking application
+    - gramps                              # genealogy
+    - foliate                             # ebook reader
+
+    # Remote servicing
+    - filezilla                           # (s)ftp(s) client
+    - remmina                             # remote desktop
+    - https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
+
+
+    ## Multimedia
+
+    # Audio & Video
+    - brasero                             # burning cds & dvds
+    - brasero-nautilus
+    - gnome-music
+    - handbrake
+    - mediainfo
+    - peek
+    - picard
+    - vlc
+    - youtube-dl
+
+    # Graphics & Photography
+    - gimp
+    - inkscape
+    - nautilus-image-converter
+
+
+    ## Utilities
+    - aria2                               # download utility
+    - gnome-tweaks
+    - hashcat                             # gpu-based password cracker
+    - john                                # cpu-based password cracker
+    - perl-Filesys-Df                     # disk usage
+    - poppler-utils
+
+    # Compression
+    - bzip2
+    - cabextract
+    - lzip
+    - p7zip
+    - p7zip-plugins
+    - unrar
+
+    # Partitioning & Filesystem
+    - balena-etcher-electron
+    - exfat-utils
+    - fuse-exfat
+    - gparted
+
+  remove:
+    - gnome-boxes
+    - rhythmbox
+    - totem

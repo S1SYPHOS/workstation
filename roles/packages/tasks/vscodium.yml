@@ -1,0 +1,31 @@
+---
+- name: VSCODIUM | Installation from GitLab Repository
+  block:
+  - name: Add VSCodium Repository
+    copy:
+      src: "{{ role_path }}/files/vscodium/vscodium.repo"
+      dest: /etc/yum.repos.d/vscodium.repo
+      owner: root
+      group: root
+      mode: 0644
+    tags:
+      - repositories
+
+  - name: Import VSCodium repository GPG key
+    rpm_key:
+      state: present
+      key: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+
+  - name: Install VSCodium
+    dnf:
+      name: codium
+      state: present
+
+  become: yes
+
+- name: Install VSCodium Extensions
+  command: /usr/bin/codium --install-extension {{ item | quote }}
+  loop: "{{ vscodium_packages }}"
+  register: vscodium_extension
+  changed_when: '"successfully installed" in vscodium_extension.stdout'
+

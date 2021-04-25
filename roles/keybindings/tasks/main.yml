@@ -1,0 +1,25 @@
+---
+- name: Keybindings
+  block:
+  - name: Install Process & System Utilities Module
+    dnf:
+      name: python3-psutil
+      state: present
+    register: psutil
+    become: yes
+
+  - name: Add Keyboard Layout
+    dconf:
+      key: /org/gnome/desktop/input-sources
+      value: "{{ keyboard_layout }}"
+
+  - name: Include Keybindings (default)
+    include: keybindings-default.yml
+    when: psutil is success
+
+  - name: Include Keybindings (custom)
+    include: keybindings-custom.yml
+    when: psutil is success
+
+  tags:
+    - gsettings
