@@ -1,9 +1,5 @@
-# Fedora Workstation - the @S1SYPHOS way
+# Personal Workstation - the @S1SYPHOS way
 
-This repository houses the [Ansible](https://www.ansible.com) playbook for setting up Fedora on my [personal workstation](https://github.com/S1SYPHOS/dotfiles).
+This repository houses the [Ansible](https://www.ansible.com) playbook which makes running ~~Fedora~~ pop_OS! on my Thinkpad T440p quite pleasing.
 
-It's a work in progress, with many plays left to chase ..
-
-## Credits
-I borrowed the `scripts` directory from [Grant Cohoe](https://github.com/cohoe/workstation), making the setup process way more reliable.
-
+Apart from system packages being installed through `apt` and `homebrew`, Ansible currently installs my [dotfiles](https://github.com/S1SYPHOS/dotfiles) sets up a basic development environment, featuring Rust, Python, Ruby, PHP / Composer and NodeJS, baked into several quick-and-dirty Ansible roles.

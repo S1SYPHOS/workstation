@@ -1,3 +1,9 @@
+# Ansible runtime and backups
+*.original
+*.tmp
+*.bkp
+*.retry
+*.*~
+
+# Vagrant VM
 .vagrant
-.vscode
-ideas
