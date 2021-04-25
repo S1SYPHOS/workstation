@@ -1,9 +1,0 @@
----
-vscodium_packages:
-  - arcticicestudio.nord-visual-studio-code
-  - dbaeumer.vscode-eslint
-  - ms-python.python
-  - redhat.vscode-yaml
-  - redhat.vscode-xml
-  - stylelint.vscode-stylelint
-  - timonwong.shellcheck

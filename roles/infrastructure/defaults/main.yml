@@ -1,0 +1,26 @@
+---
+vm_tools:
+  - bridge-utils
+  - libvirt-daemon-system
+  - libvirt-clients
+  - libvirt-dev
+  - nfs-kernel-server
+  - qemu
+  - qemu-kvm
+  - vagrant
+  - virtinst
+  - virt-manager
+
+vagrant_plugins:
+  - vagrant-libvirt
+  - vagrant-mutate
+
+
+container_tools:
+  - podman
+  - buildah
+
+oci_base_path: "{{ vm_path }}/podman"
+oci_volumes_path: "{{ oci_base_path }}/volumes"
+oci_storage_path: "{{ oci_base_path }}/storage"
+oci_conf_path: "{{ conf_path }}/containers"

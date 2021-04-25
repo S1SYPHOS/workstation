@@ -1,23 +1,22 @@
 ---
-- name: Advanced Power Management
+- name: Enabling advanced power management
   block:
-  - name: Install TLP
-    dnf:
+  - name: Installing TLP
+    apt:
       name: tlp
       state: present
 
-  - name: Start TLP
+  - name: Starting TLP
     service:
       name: tlp
       state: started
 
-  - name: Enable TLP
+  - name: Enabling TLP
     service:
       name: tlp
       enabled: true
 
-  become: yes
+  become: true
+
   tags:
-    - services
     - power
-    - tlp

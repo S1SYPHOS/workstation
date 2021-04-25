@@ -1,0 +1,164 @@
+---
+packages:
+  install:
+    ##
+    # HUMAN
+
+    # Communication
+    - evolution                           # groupware suite with mail client and organizer
+    - neomutt                             # command line mail reader based on Mutt, with added features
+
+    # Coding & CLI
+    - codium                              # VSCodium — VS Code without telemetry
+    - git                                 # fast, scalable, distributed revision control system
+    - git-extras                          # Extra commands for git
+    - kitty                               # fast, featureful, GPU based terminal emulator
+    # TODO: Replace in git config
+    - meld                                # graphical tool to diff and merge files
+    - neovim                              # heavily refactored vim fork
+    - shellcheck                          # lint tool for shell scripts
+
+    # Virtualization & Containerization
+    # TODO: Move
+    # - libvirt                             # virtualization toolkit
+    # - virt-manager                        # virtual machine manager
+
+    # Productivity
+    - anki                                # extensible flashcard learning program
+    - cherrytree                          # hierarchical note taking application
+    - gramps                              # Genealogical research program
+
+    # Remote servicing
+    - filezilla                           # Full-featured graphical FTP/FTPS/SFTP client
+    - remmina                             # GTK+ Remote Desktop Client
+    - teamviewer                          # Remote control and meeting solution
+
+    ## Multimedia
+
+    # Audio & Video
+    - brasero                             # CD/DVD burning application for GNOME
+    - clementine                          # modern music player and library organiser
+    - ffmpeg                              # Tools for transcoding, streaming and playing of multimedia files
+    - handbrake                           # versatile DVD ripper and video transcoder (GTK+ GUI)
+    - mediainfo                           # command-line utility for reading information from audio/video files
+    - peek                                # Simple animated GIF screen recorder with GUI
+    - picard                              # Next-Generation MusicBrainz audio files tagger
+    - vlc                                 # multimedia player and streamer
+
+    # Design & Photography
+    - gimp                                # GNU Image Manipulation Program
+    - gimp-data-extras                    # Extra brushes and patterns for GIMP
+    - gimp-plugin-registry                # repository of optional extensions for GIMP
+    - inkscape                            # vector-based drawing program
+    - scribus                             # Open Source Desktop Page Layout
+    - zathura                             # document viewer with a minimalistic interface
+    - zathura-pdf-poppler                 # PDF support for zathura
+    - zathura-ps                          # PostScript support for zathura
+
+    # Fonts
+    - fonts-lato                          # sans-serif typeface family font
+    - fonts-inconsolata                   # monospace font for pretty code listings and for the terminal
+    - fonts-firacode                      # Monospaced font with programming ligatures
+
+    ##
+    # MACHINE
+
+    # Basics
+    - build-essential
+    - curl
+    - file
+    - gcc
+    - git
+    - procps
+
+    # WM
+    - sway                                # i3-compatible Wayland compositor
+    - swaylock                            # Screen locker for Wayland
+    - weston                              # reference implementation of a wayland compositor
+    - waybar                              # Highly customizable Wayland bar for Sway and Wlroots based compositors
+    - wofi                                # application launcher for wlroots based wayland compositors
+    - redshift                            # Adjusts the color temperature of your screen
+    - mako-notifier                       # lightweight notification daemon for Wayland compositors
+    - grim                                # command-line utility to make screenshots of Wayland desktops
+    - slurp                               # cli utility to select a region in a Wayland compositor
+
+    # TODO:
+    # wl-copy
+    # usbguard
+    # usbguard-applet-qt
+    # grimshot
+    # swayidle
+    # swaybg
+
+    # Utilities
+    - aria2                               # High speed download utility
+    - hashcat                             # World's fastest and most advanced password recovery utility
+    - john                                # active password cracking tool
+    - poppler-utils                       # PDF utilities (based on Poppler)
+    - bat                                 # cat(1) clone with syntax highlighting and git integration
+    - bleachbit                           # delete unnecessary files from the system
+    - fd-find                             # Simple, fast and user-friendly alternative to find
+    - fping                               # sends ICMP ECHO_REQUEST packets to network hosts
+    - gron                                # tool to transform JSON into discrete, greppable assignments
+    - iotop                               # simple top-like I/O monitor
+    - mosh                                # Mobile shell that supports roaming and intelligent local echo
+    - ripgrep                             # Recursively searches directories for a regex pattern
+    - s-tui                               # terminal UI for monitoring your computer
+    - udiskie                             # automounter for removable media for Python
+    - tor                                 # anonymizing overlay network for TCP
+
+    # File manager extensions
+    - nautilus-admin                      # Extension for Nautilus to do administrative operations
+    - nautilus-nextcloud                  # Nextcloud integration for Nautilus
+    - nautilus-sendto                     # easily send files via email from within Nautilus
+    - nautilus-share                      # Nautilus extension to share folder using Samba
+    - nautilus-wipe                       # Secure deletion extension for Nautilus
+
+    # Partitioning & Filesystems
+    # - etcher-electron
+    - exfat-utils                         # utilities to create, check, label and dump exFAT filesystem
+    - exfat-fuse                          # read and write exFAT driver for FUSE
+    - gparted                             # GNOME partition editor
+
+    # Compression
+    - bzip2                               # high-quality block-sorting file compressor - utilities
+    - cabextract                          # Microsoft Cabinet file unpacker
+    - lzip                                # lossless data compressor based on the LZMA algorithm
+    - p7zip                               # 7zr file archiver with high compression ratio
+    - p7zip-full                          # 7z and 7za file archivers with high compression ratio
+    - p7zip-rar                           # non-free rar module for p7zip
+    - unrar-free                          # Unarchiver for .rar files
+
+  remove:
+    - totem                               # Simple media player for the GNOME desktop based on GStreamer
+
+
+homebrew_tmp: "/tmp/homebrew"
+homebrew_url: "https://raw.githubusercontent.com/Homebrew/install/master/install.sh"
+homebrew_checksum: "md5:11cd2f77773c6723eca451869f18d97e"
+
+homebrew_packages:
+  - bandwhich                             # Terminal bandwidth utilization tool
+  - dust                                  # More intuitive version of du in rust
+  - gh                                    # GitHub command-line tool
+  - gitui                                 # Blazing fast terminal-ui for git written in rust
+  - mdcat                                 # Show markdown documents on text terminals
+  - procs                                 # Modern replacement for ps
+  - so                                    # Terminal interface for StackOverflow
+  - starship                              # The minimal, blazing-fast, and infinitely customizable prompt for any shell
+  - tealdeer                              # A very fast implementation of tldr in Rust
+
+
+codium_packages:
+  - arcticicestudio.nord-visual-studio-code
+  - bradlc.vscode-tailwindcss
+  - dbaeumer.vscode-eslint
+  - editorconfig.editorconfig
+  - leighlondon.eml
+  - medienbaecker.kirby-snippets
+  - ms-python.python
+  - octref.vetur
+  - redhat.vscode-yaml
+  - redhat.vscode-xml
+  - stylelint.vscode-stylelint
+  - timonwong.shellcheck

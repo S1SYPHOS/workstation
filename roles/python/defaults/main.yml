@@ -1,15 +1,9 @@
 ---
 python_packages:
-  - python3-devel
-  - python3-libselinux
   - python3-pip
 
 pip_packages_path: "{{ lib_path }}/python"
 
 pip_packages:
-  - ansible
-  - black
-  - markdown
-  - molecule
   - virtualenv
-  - virtualenvwrapper
+  - youtube_dl

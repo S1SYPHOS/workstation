@@ -1,6 +1,0 @@
----
-- name: Change default keybindings
-  dconf:
-    key: "{{ item.key }}"
-    value: "{{ item.value }}"
-  loop: "{{ keybindings_default }}"
