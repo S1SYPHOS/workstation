@@ -6,9 +6,11 @@ node_packages:
 node_modules_path: "{{ lib_path }}/npm"
 
 node_modules:
+  - ghcal                                 # See the GitHub contributions calendar of a user in the command line
   - gulp                                  # The streaming build system
   - npm-check                             # Check for outdated, incorrect, and unused dependencies
   - speed-test                            # Test your internet connection speed and ping using speedtest.net from the CLI
   - spoof                                 # Easily spoof your MAC address in OS X & Linux
+  - wikit                                 # Wikipedia summaries from the command line
   - yaml2json                             # A commandline utility to convert YAML / YML to JSON
   - yarn                                  # Fast, reliable, and secure dependency management
