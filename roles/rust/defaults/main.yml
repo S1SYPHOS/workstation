@@ -7,6 +7,8 @@ rustup_completion: "/etc/bash_completion.d/rustup_completion"
 cargo_path: "{{ lib_path }}/rust"
 
 cargo_crates:
+  - battop                                # Interactive batteries viewer
+  - bottom                                # A cross-platform graphical process/system monitor
   - csview                                # A high performance csv viewer with cjk/emoji support
   - rates                                 # Currency exchange rates in your terminal
   - shellcaster                           # Terminal-based podcast manager built in Rust

@@ -18,11 +18,6 @@ packages:
     - neovim                              # heavily refactored vim fork
     - shellcheck                          # lint tool for shell scripts
 
-    # Virtualization & Containerization
-    # TODO: Move
-    # - libvirt                             # virtualization toolkit
-    # - virt-manager                        # virtual machine manager
-
     # Productivity
     - anki                                # extensible flashcard learning program
     - cherrytree                          # hierarchical note taking application
@@ -37,10 +32,12 @@ packages:
 
     # Audio & Video
     - brasero                             # CD/DVD burning application for GNOME
-    - clementine                          # modern music player and library organiser
     - ffmpeg                              # Tools for transcoding, streaming and playing of multimedia files
     - handbrake                           # versatile DVD ripper and video transcoder (GTK+ GUI)
     - mediainfo                           # command-line utility for reading information from audio/video files
+    - mpc                                 # command-line tool to interface MPD
+    - mpd                                 # Music Player Daemon
+    - ncmpcpp                             # ncurses-based client for the Music Player Daemon (MPD)
     - peek                                # Simple animated GIF screen recorder with GUI
     - picard                              # Next-Generation MusicBrainz audio files tagger
     - vlc                                 # multimedia player and streamer
@@ -92,10 +89,10 @@ packages:
 
     # Utilities
     - aria2                               # High speed download utility
+    - exa                                 # Modern replacement for 'ls'
     - hashcat                             # World's fastest and most advanced password recovery utility
     - john                                # active password cracking tool
     - poppler-utils                       # PDF utilities (based on Poppler)
-    - bat                                 # cat(1) clone with syntax highlighting and git integration
     - bleachbit                           # delete unnecessary files from the system
     - fd-find                             # Simple, fast and user-friendly alternative to find
     - fping                               # sends ICMP ECHO_REQUEST packets to network hosts
@@ -139,9 +136,12 @@ homebrew_checksum: "md5:11cd2f77773c6723eca451869f18d97e"
 
 homebrew_packages:
   - bandwhich                             # Terminal bandwidth utilization tool
+  - bat                                   # cat(1) clone with syntax highlighting and git integration
+  - croc                                  # Securely send things from one computer to another
   - dust                                  # More intuitive version of du in rust
   - gh                                    # GitHub command-line tool
   - gitui                                 # Blazing fast terminal-ui for git written in rust
+  - lf                                    # Terminal file manager
   - mdcat                                 # Show markdown documents on text terminals
   - procs                                 # Modern replacement for ps
   - so                                    # Terminal interface for StackOverflow
