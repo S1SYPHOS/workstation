@@ -4,11 +4,16 @@ rustup_url: "https://sh.rustup.rs"
 rustup_checksum: "md5:f9a1374a38d8c9f013b3827188cf4bf2"
 rustup_completion: "/etc/bash_completion.d/rustup_completion"
 
+rust_packages:
+  - libsqlite3-dev  # required for shellcaster
+  - nasm            # required for cavif
+
 cargo_path: "{{ lib_path }}/rust"
 
 cargo_crates:
   - battop                                # Interactive batteries viewer
   - bottom                                # A cross-platform graphical process/system monitor
+  - cavif                                 # AVIF image creator in pure Rust
   - csview                                # A high performance csv viewer with cjk/emoji support
   - rates                                 # Currency exchange rates in your terminal
   - shellcaster                           # Terminal-based podcast manager built in Rust

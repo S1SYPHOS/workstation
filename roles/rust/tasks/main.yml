@@ -46,10 +46,11 @@
 
   when: not rustup_installed.stat.exists
 
-- name: Installing `shellcaster` dependency
+- name: Installing dependencies
   apt:
-    name: libsqlite3-dev
+    name: "{{ rust_packages }}"
     state: present
+  become: true
 
 - name: Installing Cargo crates
   command: cargo install {{ item }}
