@@ -48,6 +48,7 @@ packages:
     - gimp-plugin-registry                # repository of optional extensions for GIMP
     - inkscape                            # vector-based drawing program
     - scribus                             # Open Source Desktop Page Layout
+    - trimage                             # GUI and command-line interface to optimize image files
     - zathura                             # document viewer with a minimalistic interface
     - zathura-pdf-poppler                 # PDF support for zathura
     - zathura-ps                          # PostScript support for zathura
@@ -91,14 +92,15 @@ packages:
     - aria2                               # High speed download utility
     - exa                                 # Modern replacement for 'ls'
     - hashcat                             # World's fastest and most advanced password recovery utility
-    - john                                # active password cracking tool
+    - john                                # Active password cracking tool
     - poppler-utils                       # PDF utilities (based on Poppler)
-    - bleachbit                           # delete unnecessary files from the system
+    - bleachbit                           # Delete unnecessary files from the system
     - fd-find                             # Simple, fast and user-friendly alternative to find
-    - fping                               # sends ICMP ECHO_REQUEST packets to network hosts
-    - gron                                # tool to transform JSON into discrete, greppable assignments
+    - fping                               # Sends ICMP ECHO_REQUEST packets to network hosts
+    - gron                                # Tool to transform JSON into discrete, greppable assignments
     - iotop                               # simple top-like I/O monitor
     - mosh                                # Mobile shell that supports roaming and intelligent local echo
+    - pdfgrep                             # search in pdf files for strings matching a regular expression
     - ripgrep                             # Recursively searches directories for a regex pattern
     - s-tui                               # terminal UI for monitoring your computer
     - udiskie                             # automounter for removable media for Python
@@ -141,6 +143,7 @@ homebrew_packages:
   - dust                                  # More intuitive version of du in rust
   - gh                                    # GitHub command-line tool
   - gitui                                 # Blazing fast terminal-ui for git written in rust
+  - gpg-tui                               # Manage your GnuPG keys with ease
   - lf                                    # Terminal file manager
   - mdcat                                 # Show markdown documents on text terminals
   - procs                                 # Modern replacement for ps
